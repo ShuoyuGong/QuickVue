@@ -1,3 +1,104 @@
-******************************Vue安装及语法***************************
+*****************************第三节*Vue安装及语法***************************
 1.www.bootcdn.cn(稳定、快速、免费的前端开源项目 CDN 加速服务)
-2.
+2.引入Vue.js文件
+    <script src="../js/vue.js"></script>
+3.简单使用
+    a.(html代码)
+        <div id="app">
+            <div>
+                <input type="text" v-model="name">
+                <span>你的名字是：{{name}}</span>
+            </div>
+            <div>
+                <input type="text" v-model="age">
+                <span>你的年龄是：{{age}}</span>
+            </div>
+            <div>
+                <input type="text" v-model="sex">
+                <span v-if="sex">你的性别是：{{sex}}</span>
+            </div>
+        </div>
+    b.js代码
+        <script src="js/main.js"></script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                name:'龚烁宇',
+                age:19,
+                sex:null
+            }
+        });
+4.v-show与v-if的使用与区别
+    同为参数为null时不显示元素标签，v-show是值不为null时显示该标签元素，为null时隐藏该元素标签；v-if是值不为null创建该元素标签，值为null是将标签元素注释掉(删除)
+
+*****************************第四节*v-for指令***************************
+1.作用
+    我们可以用 v-for 指令基于一个数组来渲染一个列表。v-for 指令需要使用 item in items 形式的特殊语法，其中 items 是源数据数组，而 item 则是被迭代的数组元素的别名，可以在控制台输入app.foodInfo.pop();删除foodInfo数组中最后一个对象，页面自动显示删除后结果
+2.使用
+    a.html代码
+        <div id="app">
+            <ul>
+                <!--遍历foodInfo数组，显示名字和价格(最终价格等于原价*折扣价)，如果没有折扣，将直接输出原价-->
+                <li v-for="food in foodInfo">{{food.name}}:￥{{food.discount ? food.price * food.discount : food.price}}</li>
+            </ul>
+        </div>
+    b.js代码
+        var app = new Vue({
+            el:'#app',
+            data:{
+                foodList:['葱','姜','蒜'],
+                foodInfo:[
+                    {
+                        name:"葱",
+                        price:10,
+                        discount:0.3,
+                    },
+                    {
+                        name:"姜",
+                        price:20,
+                        discount:0.5,
+                    },
+                    {
+                        name:"蒜",
+                        price:15,
+                        // discount:0.8,
+                    },
+                ],  
+            }
+        });
+
+*****************************第五节*v-bind指令***************************
+1.作用：
+    用于绑定数据和元素属性
+2.使用：
+    a.html代码
+        <style>
+            .active{
+                background-color: #a10;
+            }
+        </style>
+
+        <div id="app">
+            <a :href="url" :class="{active:isActive}">
+                点我
+                <!-- <img v-bind:src="img_src" v-bind:title="img_title"> -->
+            </a>
+        </div>
+    b.js代码
+        var app = new Vue({
+            el:"#app",
+            data:{
+                url:"http://www.baidu.com",
+                img_src:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1578658131593&di=c970c701252507e51b822d6d84a76fad&imgtype=0&src=http%3A%2F%2Ft7.baidu.com%2Fit%2Fu%3D3616242789%2C1098670747%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D900%26h%3D1350",
+                img_title:"美女",
+                klass:"btn btn-default",
+                isActive:true,
+            }
+        });
+3.写法：
+    a.v-bind:href/src/class = "网址/地址/class类名"
+    b.:href/src/class = "网址/地址/class类名"
+4.加class类名
+    v-bind:class="{active:true/isActive/flase}"
+
+*****************************第六节*v-on指令***************************
