@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model在其他元素及类型上的用法</title>
+</head>
+<body>
+    <div id="app">
+        <span>单选框</span>
+        <br>
+        <label>
+            男
+            <input type="radio" v-model="sex" value="male">  
+        </label>
+        <label>
+            女
+            <input type="radio" v-model="sex" value="female">
+        </label>
+        <br>
+        {{sex}}
+        <br>
+        <span>复选框</span>
+        <br>
+        <label>
+            <!-- 篮球 -->
+            <input type="checkbox" v-model="hobby" value="篮球">  
+        </label>
+        <label>
+            <!-- 台球 -->
+            <input type="checkbox" v-model="hobby" value="台球">
+        </label>
+        <label>
+            <!-- 排球 -->
+            <input type="checkbox" v-model="hobby" value="排球">
+        </label>
+        <br>
+        {{hobby}}
+    </div>
+    <hr>
+    <div id="app1">
+        <h1>你来自哪里？(单选)</h1>
+        <select v-model="from">
+            <option value = "洛阳">洛阳</option>
+            <option value = "郑州">郑州</option>
+            <option value = "开封">开封</option>
+        </select>
+
+        <h1>你去哪里？(多选)</h1>
+        <select v-model="where" multiple>
+            <option value = "洛阳">洛阳</option>
+            <option value = "郑州">郑州</option>
+            <option value = "开封">开封</option>
+        </select>
+        <br>
+        {{where}}
+    </div>
+    <hr>
+    <div id="app2">
+        <textarea v-model="article"></textarea>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

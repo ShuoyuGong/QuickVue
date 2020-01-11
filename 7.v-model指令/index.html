@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model指令</title>
+    <!-- <link rel="stylesheet" href="js/bootstrap.css"> -->
+</head>
+<body>
+    <div id="app">
+        <span>v-model</span><br>
+        <span>姓名：</span>
+        <input type="text" v-model="name"><br>
+        <h1><pre>{{name}}</pre></h1>
+    </div>
+
+    <div id="app1">
+        <span>v-model.lazy</span><br>
+        <span>姓名：</span>
+        <input type="text" v-model.lazy="name"><br>
+        <h1>{{name}}</h1>
+    </div>
+
+    <div id="app2">
+        <span>v-model.number</span><br>
+        <span>年龄：</span>
+        <input type="text" v-model.lazy.number="age"><br>
+        <h1>{{age}}</h1>
+    </div>
+
+    <div id="app3">
+        <span>v-model.trim</span><br>
+        <span>姓名：</span>
+        <input type="text" v-model.trim="name"><br>
+        <h1><pre>{{name}}</pre></h1>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
