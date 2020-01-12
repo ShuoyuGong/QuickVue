@@ -377,3 +377,71 @@
                 article:"因为爱情。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。",
             }
         });
+
+****************************第九节*控制流指令********************************
+1.使用：
+    a.html代码
+        <div id="app">
+            <div v-if = "role == 'admin' || role == 'super_admin'">
+                管理员你好
+            </div>
+            <div v-else-if = "role == 'hr'">
+                Hr你好
+            </div>
+            <div v-else>
+                您没有权限访问此页面
+            </div>
+        </div>
+    b.js代码
+        var app = new Vue({
+            el:"#app",
+            data:{
+                role:"admin"
+            }
+        });
+
+****************************第十节*计算属性********************************
+1.作用：
+    对变量的加减乘除的运算
+2.使用：
+    a.html代码
+        <div id="app">
+            <table border="1">
+                <thead>
+                    <th>姓名</th>
+                    <th>语文</th>
+                    <th>数学</th>
+                    <th>英语</th>
+                    <th>平均分</th>
+                    <th>分数</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" v-model="id"></td>
+                        <td><input type="text" v-model.number="chinese"></td>             
+                        <td><input type="text" v-model.number="math"></td>
+                        <td><input type="text" v-model.number="english"></td>
+                        <td>{{average}}</td>
+                        <td>{{sum}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    b.js代码
+        var app = new Vue({
+            el:"#app",
+            data:{
+                    id:"龚烁宇",
+                    math:10,
+                    english:90,
+                    chinese:100,
+            },
+            computed:{
+                sum:function(){
+                    return parseFloat(this.math) + parseFloat(this.english) + parseFloat(this.chinese);
+                },
+                average:function(){
+                    return Math.round(this.sum/3);
+                }
+            }
+        });
